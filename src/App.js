@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 import { FaUser, FaLock, FaEnvelope, } from "react-icons/fa"; // Import icon
 import "../src/Register.css"; // Import CSS
@@ -48,70 +49,162 @@ const LoginForm = () => {
 };
 
 
-
-
-
-
-
 // Component Register
-
 
 const RegisterForm = () => {
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [message, setMessage] = useState(""); // Phản hồi từ API
+  const [loading, setLoading] = useState(false); // Trạng thái loading
+
+  // Xử lý thay đổi input
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Xử lý submit form
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setMessage("");
+
+    // Kiểm tra mật khẩu nhập lại có khớp không
+    if (formData.password !== formData.confirmPassword) {
+      setMessage("Mật khẩu không khớp!");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch("https://your-api.com/user/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      const data = await response.json();
+      setMessage(data.message || "Đăng ký thành công!");
+
+      if (response.ok) {
+        alert("Đăng ký thành công!");
+        navigate("/"); // Chuyển về trang đăng nhập
+      }
+    } catch (error) {
+      setMessage("Lỗi kết nối, vui lòng thử lại.");
+    }
+
+    setLoading(false);
+  };
+
+  // Xử lý đăng nhập với Google
+  const handleGoogleLogin = () => {
+    window.location.href = "https://your-api.com/auth/google";
+  };
 
   return (
     <div className="register-container">
       <div className="register-box">
         <div className="logo">LOGO</div>
         <h2 className="title">Đăng ký</h2>
-        <div className="input-group">
-          <label>Tên đăng nhập</label>
-          <div className="input-wrapper">
-            <input type="text" placeholder="User name" />
-            <span className="icon">👤</span>
+
+        <form onSubmit={handleSubmit}>
+          <div className="input-group">
+            <label>Email</label>
+            <div className="input-wrapper">
+              <input
+                type="email"
+                name="email"
+                placeholder="Nhập email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+              <span className="icon">📧</span>
+            </div>
           </div>
-        </div>
-        <div className="input-group">
-          <label>Email</label>
-          <div className="input-wrapper">
-            <input type="email" placeholder="Vui lòng nhập email" />
-            <span className="icon">📧</span>
+
+          <div className="input-group">
+            <label>Tên đăng nhập</label>
+            <div className="input-wrapper">
+              <input
+                type="text"
+                name="username"
+                placeholder="Nhập tên đăng nhập"
+                value={formData.username}
+                onChange={handleChange}
+                required
+              />
+              <span className="icon">👤</span>
+            </div>
           </div>
-        </div>
-        <div className="input-group">
-          <label>Mật khẩu</label>
-          <div className="input-wrapper">
-            <input type="password" placeholder="Nhập mật khẩu" />
-            <span className="icon">👁</span>
+
+          <div className="input-group">
+            <label>Mật khẩu</label>
+            <div className="input-wrapper">
+              <input
+                type="password"
+                name="password"
+                placeholder="Nhập mật khẩu"
+                value={formData.password}
+                onChange={handleChange}
+                required
+              />
+              <span className="icon">🔒</span>
+            </div>
           </div>
-        </div>
-        <div className="input-group">
-          <label>Nhập lại mật khẩu</label>
-          <div className="input-wrapper">
-            <input type="password" placeholder="Nhập lại mật khẩu" />
-            <span className="icon">👁</span>
+
+          <div className="input-group">
+            <label>Nhập lại mật khẩu</label>
+            <div className="input-wrapper">
+              <input
+                type="password"
+                name="confirmPassword"
+                placeholder="Nhập lại mật khẩu"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                required
+              />
+              <span className="icon">🔒</span>
+            </div>
           </div>
-        </div>
-        <button className="register-btn">ĐĂNG KÝ</button>
-        <button className="secondary-btn" onClick={() => navigate("/")}>
+
+          <button type="submit" className="register-button" disabled={loading}>
+            {loading ? "Đang đăng ký..." : "ĐĂNG KÝ"}
+          </button>
+          <button className="secondary-button" onClick={() => navigate("/")}>
           ĐĂNG NHẬP
-        </button>
+          </button>
+        </form>
+
+        {message && <p className="message">{message}</p>} {/* Hiển thị phản hồi từ API */}
+
         <div className="divider">
           <hr />
           <span>hoặc</span>
           <hr />
         </div>
-        <button className="google-btn">
+
+        <button className="google-login-button" onClick={handleGoogleLogin}>
           <img src="https://www.svgrepo.com/show/303108/google-icon-logo.svg" alt="Google" />
           ĐĂNG NHẬP VỚI GOOGLE
         </button>
+
+        
       </div>
     </div>
   );
 };
-
-
-
 
 
 
