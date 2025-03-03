@@ -1,136 +1,133 @@
-/* LoginForm.css */
+/* LoginForm.css - Mobile Friendly */
 .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background-color: #f3f4f6;
-  }
-  
-  .login-box {
-    background: white;
-    padding: 2rem;
-    border-radius: 16px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 350px;
-    text-align: center;
-  }
-  
-  .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    background: #e5e7eb;
-    width: 60px;
-    height: 60px;
-    line-height: 60px;
-    border-radius: 50%;
-    margin: 0 auto;
-  }
-  
-  .title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-top: 1rem;
-  }
-  
-  .input-group {
-    margin-top: 1rem;
-    text-align: left;
-  }
-  
-  .input-group label {
-    display: block;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-  }
-  
-  .input-wrapper {
-    position: relative;
-    width: 100%; 
-    display: flex;
-    align-items: center;
-  }
-  
-  .input-wrapper input {
-    width: 100%; /* Căn chỉnh input đúng kích thước */
-    padding: 10px;
-    padding-right: 35px; /* Tạo khoảng cách để icon không đè lên text */
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-  }
-  
-  .input-wrapper .icon {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    color: #6b7280; /* Màu icon dịu hơn */
-  }
-  
-  .icon {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  
-  .links {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.9rem;
-    margin-top: 10px;
-  }
-  
-  .links a {
-    color: #3b82f6;
-    text-decoration: none;
-  }
-  
-  .login-btn {
-    background: #3b82f6;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 8px;
-    width: 100%;
-    margin-top: 1rem;
-    font-size: 1rem;
-    cursor: pointer;
-  }
-  
-  .divider {
-    display: flex;
-    align-items: center;
-    margin: 1rem 0;
-  }
-  
-  .divider hr {
-    flex-grow: 1;
-    border: none;
-    height: 1px;
-    background: #d1d5db;
-  }
-  
-  .divider span {
-    padding: 0 10px;
-    color: #6b7280;
-  }
-  
-  .google-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #d1d5db;
-    padding: 10px;
-    border-radius: 8px;
-    width: 100%;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  .google-btn img {
-    width: 20px;
-    margin-right: 10px;
-  }
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f3f4f6;
+  padding: 1.5rem;
+}
+
+.login-box {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  background: #e5e7eb;
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+}
+
+.title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 1.2rem;
+}
+
+.input-group {
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 14px;
+  padding-right: 45px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.input-wrapper .icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #6b7280;
+  font-size: 1.2rem;
+}
+
+.links {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.links a {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.login-btn {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  width: 100%;
+  margin-top: 1.2rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 1.2rem 0;
+}
+
+.divider hr {
+  flex-grow: 1;
+  border: none;
+  height: 1px;
+  background: #d1d5db;
+}
+
+.divider span {
+  padding: 0 10px;
+  color: #6b7280;
+}
+
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d1d5db;
+  padding: 12px;
+  border-radius: 10px;
+  width: 100%;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.google-btn img {
+  width: 20px;
+  margin-right: 10px;
+}
