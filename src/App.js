@@ -2,14 +2,47 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-
 import { FaUser, FaLock, FaEnvelope, } from "react-icons/fa"; // Import icon
 import "../src/Register.css"; // Import CSS
 import "../src/Fogetpassword.css"; // Import file CSS
 import"../src/Loginform.css"
+import { validateLoginForm } from "../src/utils/formValidation";
+import { loginUser } from '../src/services/authService';
 // LoginForm.js
-
 const LoginForm = () => {
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({ username: "", password: "" });
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+
+  // Xử lý thay đổi input
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Xử lý đăng nhập
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setMessage("");
+
+    const newErrors = validateLoginForm(formData);
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length > 0) return;
+
+    setLoading(true);
+    const result = await loginUser(formData);
+    setLoading(false);
+
+    if (result.success) {
+      alert("Đăng nhập thành công!");
+      navigate("/dashboard");
+    } else {
+      setMessage(result.data.message || "Sai thông tin đăng nhập.");
+    }
+  };
+
   return (
     <div className="container">
       <div className="login-box">
@@ -47,6 +80,7 @@ const LoginForm = () => {
     </div>
   );
 };
+
 
 
 // Component Register
