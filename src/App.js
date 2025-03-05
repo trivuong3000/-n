@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { FaUser, FaLock, FaEnvelope, } from "react-icons/fa"; // Import icon
-import "../src/Register.css"; // Import CSS
-import "../src/Fogetpassword.css"; // Import file CSS
-import"../src/Loginform.css"
+import { Link } from 'react-router-dom';
+import { FaEye, FaEyeSlash, FaUser } from "react-icons/fa";
+import { FaLock, FaEnvelope } from "react-icons/fa";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import "../src/Register.css";
+import "../src/Fogetpassword.css";
+import "../src/Loginform.css";
 import { validateLoginForm } from "../src/utils/formValidation";
 import { loginUser } from '../src/services/authService';
-// LoginForm.js
+
 const LoginForm = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ username: "", password: "" });
@@ -43,36 +45,59 @@ const LoginForm = () => {
     }
   };
 
+  const handleGoogleLogin = () => {
+    window.location.href = "https://accounts.google.com/signin";
+  };
+
   return (
     <div className="container">
       <div className="login-box">
         <div className="logo">LOGO</div>
         <h2 className="title">Đăng nhập</h2>
-        <div className="input-group">
-          <label>Tên đăng nhập</label>
-          <div className="input-wrapper">
-            <input type="text" placeholder="User name" />
-            <span className="icon">👤</span>
+        <form onSubmit={handleSubmit}>
+          <div className="input-group">
+            <label>Tên đăng nhập</label>
+            <div className="input-wrapper">
+              <input 
+                type="text" 
+                name="username" 
+                value={formData.username} 
+                onChange={handleChange} 
+                placeholder="User name" 
+              />
+              <span className="icon"><FaUser /></span>
+            </div>
+            {errors.username && <p className="error-message">{errors.username}</p>}
           </div>
-        </div>
-        <div className="input-group">
-          <label>Mật khẩu</label>
-          <div className="input-wrapper">
-            <input type="password" placeholder="******" />
-            <span className="icon">👁</span>
+          <div className="input-group">
+            <label>Mật khẩu</label>
+            <div className="input-wrapper">
+              <input 
+                type="password" 
+                name="password" 
+                value={formData.password} 
+                onChange={handleChange} 
+                placeholder="******" 
+              />
+              <span className="icon"><FaEye /></span>
+            </div>
+            {errors.password && <p className="error-message">{errors.password}</p>}
           </div>
-        </div>
-        <div className="links">
-          <Link to="/register">Đăng ký tài khoản</Link>
-          <Link to="/forgot-password">Quên mật khẩu</Link>
-        </div>
-        <button className="login-btn">ĐĂNG NHẬP</button>
+          {message && <p className="error-message">{message}</p>}
+          <div className="links">
+            <Link to="/register">Đăng ký tài khoản</Link>
+            <Link to="/forgot-password">Quên mật khẩu</Link>
+          </div>
+          <button className="login-btn" type="submit" disabled={loading}>
+            {loading ? "Đang xử lý..." : "ĐĂNG NHẬP"}
+          </button>
+        </form>
         <div className="divider">
           <hr />
           <span>hoặc</span>
           <hr />
         </div>
-        <button className="google-btn">
+        <button className="google-btn" onClick={handleGoogleLogin}>
           <img src="https://www.svgrepo.com/show/303108/google-icon-logo.svg" alt="Google" />
           ĐĂNG NHẬP VỚI GOOGLE
         </button>
@@ -80,6 +105,8 @@ const LoginForm = () => {
     </div>
   );
 };
+
+
 
 
 

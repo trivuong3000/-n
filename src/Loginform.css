@@ -19,7 +19,7 @@
 }
 
 .logo {
-  font-size: 1.2rem;
+  font-size: 1rem; /* Giảm kích thước chữ LOGO */
   font-weight: bold;
   background: #e5e7eb;
   width: 70px;
@@ -30,9 +30,9 @@
 }
 
 .title {
-  font-size: 1.6rem;
+  font-size: 1.4rem; /* Giảm kích thước tiêu đề 'Đăng nhập' */
   font-weight: bold;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1rem;
 }
 
 .input-group {
@@ -43,7 +43,8 @@
 .input-group label {
   display: block;
   font-weight: 500;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
+  font-size: 0.85rem; /* Giảm kích thước nhãn 'Tên đăng nhập' và 'Mật khẩu' */
 }
 
 .input-wrapper {
@@ -55,11 +56,11 @@
 
 .input-wrapper input {
   width: 100%;
-  padding: 14px;
+  padding: 12px;
   padding-right: 45px;
   border: 1px solid #d1d5db;
   border-radius: 10px;
-  font-size: 1rem;
+  font-size: 0.9rem; /* Giảm kích thước chữ trong ô nhập */
 }
 
 .input-wrapper .icon {
@@ -69,14 +70,14 @@
   transform: translateY(-50%);
   cursor: pointer;
   color: #6b7280;
-  font-size: 1.2rem;
+  font-size: 1rem; /* Giảm kích thước icon */
 }
 
 .links {
   display: flex;
   justify-content: space-between;
-  font-size: 0.9rem;
-  margin-top: 10px;
+  font-size: 0.75rem; /* Giảm kích thước chữ 'Đăng ký tài khoản' và 'Quên mật khẩu' */
+  margin-top: 8px;
 }
 
 .links a {
@@ -88,18 +89,18 @@
   background: #3b82f6;
   color: white;
   border: none;
-  padding: 14px;
+  padding: 12px;
   border-radius: 10px;
   width: 100%;
-  margin-top: 1.2rem;
-  font-size: 1.1rem;
+  margin-top: 1rem;
+  font-size: 1rem; /* Giảm kích thước nút 'ĐĂNG NHẬP' */
   cursor: pointer;
 }
 
 .divider {
   display: flex;
   align-items: center;
-  margin: 1.2rem 0;
+  margin: 1rem 0;
 }
 
 .divider hr {
@@ -112,6 +113,7 @@
 .divider span {
   padding: 0 10px;
   color: #6b7280;
+  font-size: 0.75rem; /* Giảm kích thước chữ 'hoặc' */
 }
 
 .google-btn {
@@ -119,15 +121,15 @@
   align-items: center;
   justify-content: center;
   border: 1px solid #d1d5db;
-  padding: 12px;
+  padding: 10px;
   border-radius: 10px;
   width: 100%;
   cursor: pointer;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1rem; /* Giảm kích thước nút 'ĐĂNG NHẬP VỚI GOOGLE' */
 }
 
 .google-btn img {
-  width: 20px;
-  margin-right: 10px;
+  width: 18px;
+  margin-right: 8px;
 }
