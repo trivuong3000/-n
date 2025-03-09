@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 import { FaEye, FaEyeSlash, FaUser } from "react-icons/fa";
 import { FaLock, FaEnvelope } from "react-icons/fa";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
 import "../src/Register.css";
 import "../src/Fogetpassword.css";
 import "../src/Loginform.css";
+import NotificationsPage from "./NotificationsPage";
+import HomePage from "./HomePage";
 import { validateLoginForm } from "../src/utils/formValidation";
 import { loginUser } from '../src/services/authService';
 
@@ -39,7 +40,7 @@ const LoginForm = () => {
 
     if (result.success) {
       alert("Đăng nhập thành công!");
-      navigate("/dashboard");
+      navigate("/home");
     } else {
       setMessage(result.data.message || "Sai thông tin đăng nhập.");
     }
@@ -410,6 +411,8 @@ const App = () => {
         <Route path="/" element={<LoginForm />} />
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/notifications" element={<NotificationsPage />} />
       </Routes>
     </Router>
   );
