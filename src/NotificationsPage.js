@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaHome, FaWallet, FaSearch, FaBell, FaUser } from "react-icons/fa";
+import { FaHome, FaWallet, FaBell, FaUser } from "react-icons/fa";
+import { MdQrCodeScanner } from "react-icons/md";
 import "../src/NotificationsPage.css"; // Import CSS
 
 const NotificationsPage = () => {
@@ -53,10 +54,11 @@ const NotificationsPage = () => {
             </p>
           </div>
     
-          <footer className="bottom-nav">
+          <footer className="bottom1-nav">
             <Link to="/home" className="nav-item"><FaHome /> Trang chủ</Link>
             <Link to="/wallet" className="nav-item"><FaWallet /> Ví giấy tờ</Link>
-            <Link to="/scan" className="nav-item scan"><FaSearch /></Link>
+            <Link to="/scan" className="nav-item scan"><MdQrCodeScanner /> 
+            </Link>
             <Link to="/notifications" className="nav-item active"><FaBell /> Thông báo</Link>
             <Link to="/profile" className="nav-item"><FaUser /> Tài khoản</Link>
           </footer>

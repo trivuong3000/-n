@@ -11,6 +11,7 @@ import NotificationsPage from "./NotificationsPage";
 import HomePage from "./HomePage";
 import { validateLoginForm } from "../src/utils/formValidation";
 import { loginUser } from '../src/services/authService';
+import { signInWithGoogle } from "../src/firebaseConfig";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -46,8 +47,11 @@ const LoginForm = () => {
     }
   };
 
-  const handleGoogleLogin = () => {
-    window.location.href = "https://accounts.google.com/signin";
+  const handleGoogleLogin = async () => {
+    const user = await signInWithGoogle();
+    if (user) {
+      navigate("/home"); // Điều hướng sau khi đăng nhập
+    }
   };
 
   return (

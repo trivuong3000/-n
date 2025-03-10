@@ -1,136 +1,161 @@
+/* Tổng thể */
 .home-container {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background: #f8f8f8;
+  background: #f5f5f5;
+  align-items: center;
+  padding: 12px 0;
 }
 
+/* Header */
 .home-header {
   background: white;
-  padding: 12px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  width: 95%;
+  max-width: 420px;
+  border-radius: 16px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Profile */
 .profile {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 12px;
   width: 100%;
+  max-width: 350px;
+  justify-content: center;
+  position: relative;
 }
 
 .avatar {
-  width: 36px;
-  height: 36px;
-  background: gray;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
+  background: gray;
 }
 
 h2 {
-  font-size: 16px;
-  margin: 0;
-  flex-grow: 1;
-}
-
-.search-icon {
   font-size: 18px;
-  cursor: pointer;
+  margin: 0;
+  font-weight: bold;
 }
 
+/* Nút chọn thẻ */
 .card-options {
   display: flex;
-  gap: 8px;
-  margin-top: 8px;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+  width: 100%;
 }
 
 .card-button {
   background: #FFD700;
-  padding: 6px 10px;
-  border-radius: 6px;
+  padding: 12px 20px;
+  border-radius: 12px;
   border: none;
-  font-size: 12px;
-  white-space: nowrap;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  justify-content: center;
+  flex: 1;
+  max-width: 160px;
 }
 
+/* Nội dung chính */
 .content {
   flex-grow: 1;
   background: lightgray;
-  padding: 10px;
+  width: 95%;
+  max-width: 420px;
+  height: 65vh;
+  margin-top: 16px;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+/* Thanh điều hướng */
 .bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
+  max-width: 420px;
+  background: white;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-around;
-  background: white;
-  padding: 10px;
-  border-top: 1px solid #ddd;
-}
-
-.nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 12px;
-  text-decoration: none;
-  color: gray;
-}
-
-.nav-item svg {
-  font-size: 16px;
-}
-
-.nav-item.active {
-  color: blue;
+  padding: 10px 0;
+  align-items: center; /* Căn giữa các nút */
 }
 
 .scan {
   background: blue;
   color: white;
-  padding: 12px;
+  padding: 10px;
   border-radius: 50%;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
 }
 
-/* 📱 Responsive cho màn hình nhỏ */
+.scan svg {
+  font-size: 20px;
+  color: white;
+}
+
+/* Responsive */
 @media (max-width: 480px) {
   .home-header {
-    padding: 8px;
+    padding: 12px;
   }
 
   .profile {
-    flex-direction: row;
-    justify-content: center;
+    gap: 10px;
   }
 
   .avatar {
-    width: 32px;
-    height: 32px;
+    width: 38px;
+    height: 38px;
   }
 
   h2 {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .card-options {
-    flex-wrap: wrap;
-    justify-content: center;
+    gap: 10px;
   }
 
   .card-button {
-    font-size: 10px;
-    padding: 5px 8px;
+    font-size: 12px;
+    padding: 10px 14px;
   }
 
   .bottom-nav {
-    padding: 8px;
+    padding: 10px;
   }
 
   .nav-item {
-    font-size: 10px;
+    font-size: 11px;
   }
 
   .nav-item svg {
-    font-size: 14px;
+    font-size: 16px;
   }
 }

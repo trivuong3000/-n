@@ -1,8 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FaSearch, FaHome, FaWallet, FaBell, FaUser } from "react-icons/fa";
-import "../src/HomePage.css";
+import { MdQrCodeScanner } from "react-icons/md";
 
+import "../src/HomePage.css";
+const userName = localStorage.getItem("userName") || "Người dùng";
 const HomePage = () => {
   const navigate = useNavigate(); // Hook điều hướng
 
@@ -11,7 +13,7 @@ const HomePage = () => {
       <header className="home-header">
         <div className="profile">
           <div className="avatar"></div>
-          <h2>LƯƠNG PHƯỚC THÀNH</h2>
+          <h2>{userName}</h2>
           <FaSearch className="search-icon" />
         </div>
         <div className="card-options">
@@ -25,12 +27,32 @@ const HomePage = () => {
       </main>
 
       <footer className="bottom-nav">
-        <button onClick={() => navigate("/home")} className="nav-item"><FaHome />Trang chủ</button>
-        <button onClick={() => navigate("/wallet")} className="nav-item"><FaWallet />Ví giấy tờ</button>
-        <button onClick={() => navigate("/scan")} className="nav-item scan"><FaSearch /></button>
-        <button onClick={() => navigate("/terms")} className="nav-item active"><FaBell />Thông báo</button>
-        <button onClick={() => navigate("/profile")} className="nav-item"><FaUser />Tài khoản</button>
-      </footer>
+        <button onClick={() => navigate("/home")} className="nav-item">
+          <FaHome />
+          <span>Trang chủ</span>
+        </button>
+        <button onClick={() => navigate("/wallet")} className="nav-item">
+          <FaWallet />
+          <span>Ví giấy tờ</span>
+        </button>
+        
+        {/* Nút scan nằm cùng hàng */}
+        <button onClick={() => navigate("/scan")} className="scan">
+            <MdQrCodeScanner /> {/* Icon giống ảnh bạn gửi */}
+        </button>
+
+        <button onClick={() => navigate("/notifications")} className="nav-item">
+          <FaBell />
+          <span>Thông báo</span>
+        </button>
+        <button onClick={() => navigate("/profile")} className="nav-item">
+          <FaUser />
+          <span>Tài khoản</span>
+        </button>
+
+
+</footer>
+
     </div>
   );
 };
